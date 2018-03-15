@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // Styles
-// import './GroupList.styl'
+import './GroupList.styl'
 
 class GroupList extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class GroupList extends Component {
     return (
       <div className="group-list">
         {this.state.groups.map(item => (
-          <Link to={`/schedule/${item.group_id}`} className="faculty-list__item" key={item.group_id}>{item.group_name}</Link>
+          <Link to={`/schedule/${item.group_id}`} className="group-list__item" key={item.group_id}>{item.group_name}</Link>
         ))}
       </div>
     );

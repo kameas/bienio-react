@@ -10,16 +10,28 @@ import GroupList from './group-list/GroupList';
 import Schedule from './schedule/Schedule';
 import Search from './search/Search';
 import Teacher from './schedule/Teacher';
+import Greeting from './schedule/Greeting';
 
 class Content extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      preloader: false
+    }
+  }
+
+
   render() {
     return (
       <div className="content">
         <Route path="/faculties/:facultyId" component={GroupList}/>
+
         <Route path="/schedule/:groupId" component={Schedule}/>
-        <Route path="/search" component={Search}/>
         <Route path="/teacher/:teacherId" component={Teacher}/>
-        {/* search.php?teach_query={запрос */}
+        <Route exact path="/" component={Greeting}/>
+
+        <Route path="/search" component={Search}/>
       </div>
     );
   }

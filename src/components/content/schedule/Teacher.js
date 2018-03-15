@@ -6,55 +6,27 @@ import React, { Component } from 'react';
 // import * as qs from 'query-string';
 
 // Other components
-import Day from './day/Day';
+import ScheduleList from './schedule-list/ScheduleList';
 
 class Teacher extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      days: [],
-      groupName: '',
-      teacherId: this.props.match.params.teacherId,
-      week: 0
+      preloader: false
     }
   }
-
-  getSchedule() {
-    fetch(`http://bsu.bienio.ru/api/get_teacher?teach_id=${this.state.teacherId}&week_id=${this.state.week}`)
-    .then(results => results.json())
-    .then(data => {
-      this.setState({
-        days: data.days,
-        groupName: data.group_name
-      });
-    })
-  }
-
+  
   componentDidMount() {
-    this.getSchedule()
-  }
-
-  componentWillReceiveProps() {
-    this.getSchedule()
   }
 
   render() {
     return (
       <div className="schedule">
-        {/* <div style={{ width: '100%', minWidth: '100%' }}>
-          <Link to={`/schedule/${this.state.groupId}?week=${this.state.week - 1}`}>prev</Link>
-          <Link to={`/schedule/${this.state.groupId}?week=${this.state.week + 1}`}>next</Link>
-        </div> */}
-        {this.state.days.map(item => (
-          <div key={item.weekday} className="schedule__item">
-            <Day
-              lessons={item.lessons}
-              title={item.weekday_name}
-              date={item.weekday_date}
-            />
-          </div>
-        ))}
+        <ScheduleList
+          requestId={this.props.match.params.teacherId}
+          type="teacher"
+        />
       </div>
     );
   }

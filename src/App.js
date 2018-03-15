@@ -1,6 +1,7 @@
 // React Components import
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import history from './history';
 
 // Styles
 import './App.styl';
@@ -12,13 +13,11 @@ import Content from './components/content/Content';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Route path="/">
-          <div className="wrapper">
-            <Navigation></Navigation>
-            <Content></Content>
-          </div>
-        </Route>
+      <Router history={history}>
+        <div className="wrapper">
+          <Navigation></Navigation>
+          <Content></Content>
+        </div>
       </Router>
     );
   }

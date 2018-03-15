@@ -1,6 +1,6 @@
-// React Component import
+// React Components import
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom'
+import history from '../../../history';
 
 // Styles
 import './SearchField.styl'
@@ -10,45 +10,30 @@ class SearchField extends Component {
     super(props);
     
     this.state = {
-      query: '',
-      fireRedirect: false
+      query: ''
     }
   }
 
   render() {
-    const { fireRedirect, query } = this.state
-
-    console.log('query:', query)
-
     return (
       <form className="search" onSubmit={this.handleSubmit.bind(this)}>
         <input type="text" placeholder="Поиск преподавателя" onChange={this.handleChange.bind(this)} value={this.state.query}/>
         <button type="submit"></button>
-        {/* {fireRedirect && (
-          <Redirect to={`/search?searchQuery=${query}`}/>
-        )} */}
       </form>
     );
   }
 
   handleChange(e) {
-    console.log(e.target.value)
 
     this.setState({
-      query: e.target.value,
-      fireRedirect: false
+      query: e.target.value
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.props)
-    console.log(this)
-    // this.props.history.push(`/search?searchQuery=${this.state.query}`)
-    // this.setState({
-    //   fireRedirect: true
-    // });
+    history.push(`/search?searchQuery=${this.state.query}`);
   }
 }
 

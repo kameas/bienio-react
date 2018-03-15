@@ -14,9 +14,11 @@ class Day extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
+    this.setState({
+      lessons: this.props.lessons
+    })
 
-    // this.getSchedule()
+    console.log('in day state:', this.state)
   }
 
   render() {
@@ -27,7 +29,7 @@ class Day extends Component {
           <div className="day__date">{this.props.date}</div>
         </div>
         <div className="day__body">
-          {this.props.lessons.map(item => (
+          {this.state.lessons.map(item => (
             <div key={item.time_start} className="lesson">
               <div className="lesson__title">{item.subject}</div>
               <div className="lesson__type">{item.type}</div>
