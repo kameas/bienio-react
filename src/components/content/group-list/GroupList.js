@@ -35,7 +35,7 @@ class GroupList extends Component {
     return (
       <div className="group-list">
         {this.state.groups.map(item => (
-          <Link to={`/schedule/${item.group_id}`} className="group-list__item" key={item.group_id}>{item.group_name}</Link>
+          <Link to={`/bienio-react/schedule/${item.group_id}`} className="group-list__item" key={item.group_id}>{item.group_name}</Link>
         ))}
       </div>
     );

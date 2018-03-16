@@ -26,7 +26,7 @@ class FacultyList extends Component {
     return (
       <div className="faculty-list">
         {this.state.faculties.map(item => (
-          <Link to={`/faculties/${item.faculty_id}`} className="faculty-list__item" key={item.faculty_id}>{item.faculty_name}</Link>
+          <Link to={`/bienio-react/faculties/${item.faculty_id}`} className="faculty-list__item" key={item.faculty_id}>{item.faculty_name}</Link>
         ))}
       </div>
     );

@@ -33,7 +33,7 @@ class SearchField extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    history.push(`/search?searchQuery=${this.state.query}`);
+    history.push(`/bienio-react/search?searchQuery=${this.state.query}`);
   }
 }
 

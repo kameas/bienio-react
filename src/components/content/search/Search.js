@@ -41,7 +41,7 @@ class Search extends Component {
     return (
       <div className="search-list">
         {this.state.teachers.map(item => (
-          <Link to={`/teacher/${item.teach_id}`} className="search-list__item" key={item.teach_id}>{item.teach_name}</Link>
+          <Link to={`/bienio-react/teacher/${item.teach_id}`} className="search-list__item" key={item.teach_id}>{item.teach_name}</Link>
         ))}
       </div>
     );

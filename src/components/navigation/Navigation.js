@@ -20,7 +20,7 @@ class Menu extends Component {
   render() {
     return (
       <div className="menu">
-        <Link to="/" className="logo">
+        <Link to="/bienio-react/" className="logo">
           <img src={Logo} alt="Bienio"/>
         </Link>
         <SearchField/>

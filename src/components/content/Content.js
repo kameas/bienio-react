@@ -25,13 +25,13 @@ class Content extends Component {
   render() {
     return (
       <div className="content">
-        <Route path="/faculties/:facultyId" component={GroupList}/>
+        <Route path="/bienio-react/faculties/:facultyId" component={GroupList}/>
 
-        <Route path="/schedule/:groupId" component={Schedule}/>
-        <Route path="/teacher/:teacherId" component={Teacher}/>
-        <Route exact path="/" component={Greeting}/>
+        <Route path="/bienio-react/schedule/:groupId" component={Schedule}/>
+        <Route path="/bienio-react/teacher/:teacherId" component={Teacher}/>
+        <Route exact path="/bienio-react" component={Greeting}/>
 
-        <Route path="/search" component={Search}/>
+        <Route path="/bienio-react/search" component={Search}/>
       </div>
     );
   }
