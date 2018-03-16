@@ -15,7 +15,7 @@ class FacultyList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://bsu.bienio.ru/api/get_faculties')
+    fetch('https://bsu.bienio.ru/api/get_faculties')
     .then(results => results.json())
     .then(data => {
       this.setState({faculties: data.faculties});

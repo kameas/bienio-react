@@ -15,7 +15,7 @@ class GroupList extends Component {
   }
 
   getGroups() {
-    fetch(`http://bsu.bienio.ru/api/get_group?faculty_id=${this.props.match.params.facultyId}`)
+    fetch(`https://bsu.bienio.ru/api/get_group?faculty_id=${this.props.match.params.facultyId}`)
     .then(results => results.json())
     .then(data => {
       this.setState({groups: data.groups});

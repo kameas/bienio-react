@@ -21,7 +21,7 @@ class Menu extends Component {
     return (
       <div className="menu">
         <Link to="/" className="logo">
-          <Logo/>
+          <img src={Logo} alt="Bienio"/>
         </Link>
         <SearchField/>
         <FacultyList/>

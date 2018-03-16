@@ -197,7 +197,22 @@ module.exports = {
           // easy unclude svg
           {
             test: /\.svg$/,
-            loader: require.resolve('svg-react-loader')
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: require.resolve('file-loader')
+              },
+              {
+                loader: require.resolve('svgo-loader'),
+                options: {
+                  plugins: [
+                    {removeTitle: true},
+                    {convertColors: {shorthex: false}},
+                    {convertPathData: false}
+                  ]
+                }
+              }
+            ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

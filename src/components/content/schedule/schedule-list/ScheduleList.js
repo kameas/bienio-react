@@ -28,7 +28,7 @@ class ScheduleList extends Component {
   
   getSchedule() {
 
-    const url = `http://bsu.bienio.ru/api/${this.props.type === 'group' ? 'get_schedule' : 'get_teacher'}?${this.props.type === 'group' ? 'group_id' : 'teach_id'}=${this.props.requestId}&week_id=${this.state.week}`;
+    const url = `https://bsu.bienio.ru/api/${this.props.type === 'group' ? 'get_schedule' : 'get_teacher'}?${this.props.type === 'group' ? 'group_id' : 'teach_id'}=${this.props.requestId}&week_id=${this.state.week}`;
 
     fetch(url)
       .then(results => results.json())

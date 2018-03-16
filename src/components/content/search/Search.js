@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // For parse search in location
-import * as qs from 'query-string';
+// import { parse } from 'query-string';
 
 // Styles
 import './Search.styl'
@@ -18,7 +18,7 @@ class Search extends Component {
   }
 
   getTeachers() {
-    fetch(`http://bsu.bienio.ru/api/search.php?teach_query=${qs.parse(this.props.location.search).searchQuery}`)
+    fetch(`https://bsu.bienio.ru/api/search.php?teach_query=${this.props.location.search.split('?searchQuery=')[1]}`)
     .then(results => results.json())
     .then(data => {
       if (data) {

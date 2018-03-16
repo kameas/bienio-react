@@ -166,7 +166,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.styl$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -191,6 +191,7 @@ module.exports = {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
                         ident: 'postcss',
+                        sourceMap: shouldUseSourceMap,
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
                           autoprefixer({
@@ -205,12 +206,39 @@ module.exports = {
                         ],
                       },
                     },
+                    {
+                      loader: require.resolve('stylus-loader'),
+                      options: { sourceMap: shouldUseSourceMap }
+                    }
                   ],
                 },
                 extractTextPluginOptions
               )
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          // easy unclude svg
+          {
+            test: /\.svg$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: require.resolve('file-loader'),
+                options: {
+                  name: 'static/media/[name].[hash:8].[ext]',
+                }
+              },
+              {
+                loader: require.resolve('svgo-loader'),
+                options: {
+                  plugins: [
+                    {removeTitle: true},
+                    {convertColors: {shorthex: false}},
+                    {convertPathData: false}
+                  ]
+                }
+              }
+            ]
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -222,7 +250,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.svg$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
