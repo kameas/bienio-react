@@ -23,7 +23,7 @@ class GroupList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params)
+    // console.log(this.props.match.params)
     this.getGroups()
   }
 

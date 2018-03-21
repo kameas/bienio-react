@@ -1,6 +1,7 @@
 // React Components import
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 // Styles
 import './Navigation.styl';
@@ -12,7 +13,7 @@ import Logo from '../../icons/logo.svg';
 import SearchField from './search-field/SearchField';
 import FacultyList from './faculty-list/FacultyList';
 
-class Menu extends Component {
+class Navigation extends Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -30,4 +31,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default Navigation;
