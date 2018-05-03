@@ -1,6 +1,6 @@
 // React Components import
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // For parse search in location
 // import * as qs from 'query-string';
@@ -18,15 +18,16 @@ class ScheduleList extends Component {
     this.state = {
       days: [],
       title: '',
-      week: 0,
+      week: this.props.currentWeek,
       type: 'group'
     }
     
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    // this.week = qs.parse(this.props.location.search).searchQuery
   }
   
   getSchedule() {
+
+    console.log('get data, state:', this.state)
 
     const url = `https://bsu.bienio.ru/api/${this.props.type === 'group' ? 'get_schedule' : 'get_teacher'}?${this.props.type === 'group' ? 'group_id' : 'teach_id'}=${this.props.requestId}&week_id=${this.state.week}`;
 
@@ -36,7 +37,6 @@ class ScheduleList extends Component {
         this.setState({
           days: data.days,
           title: data.group_name,
-          week: 0
         });
       })
   }
@@ -59,6 +59,22 @@ class ScheduleList extends Component {
     this.getSchedule()
   }
 
+  componentDidUpdate() {
+    console.log('update', arguments, this.state)
+  }
+
+  componentWillReceiveProps(props) {
+    // console.log(props)
+    // console.log(props.currentWeek)
+
+    // this.setState({
+    //   week: props.currentWeek
+    // })
+    // console.log(this.state)
+
+    // this.getSchedule()
+  }
+
   render() {
 
     return (
@@ -68,15 +84,16 @@ class ScheduleList extends Component {
         <div className="schedule-list__options">
           <div className="schedule-list__save">
             <label className="schedule-save">
-              <input type="checkbox" onChange={this.toggleUserData.bind(this)} defaultChecked={this.userData && this.userData.id === this.props.requestId}/>
-              {this.props.type === 'group' ? 'Это моя группа' : 'Это я'}
+              <input type="checkbox" className="schedule-save__input" onChange={this.toggleUserData.bind(this)} defaultChecked={this.userData && this.userData.id === this.props.requestId}/>
+              <span className="schedule-save__styler"></span>
+              Сохранить
             </label>
           </div>
 
           <div className="schedule-list__navigation">
             <div className="schedule-navigation">
-              <div className="schedule-navigation__item">Prev</div>
-              <div className="schedule-navigation__item">Next</div>
+              <Link to={`/bienio-react/schedule/${this.props.requestId}/week/${Number(this.state.week) - 1}`} className="schedule-navigation__item">Прыдыдущая</Link>
+              <Link to={`/bienio-react/schedule/${this.props.requestId}/week/${Number(this.state.week) + 1}`} className="schedule-navigation__item">Следующая</Link>
             </div>
           </div>
         </div>

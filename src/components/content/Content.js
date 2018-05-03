@@ -27,7 +27,9 @@ class Content extends Component {
       <div className="content">
         <Route path="/bienio-react/faculties/:facultyId" component={GroupList}/>
 
-        <Route path="/bienio-react/schedule/:groupId" component={Schedule}/>
+        {/* <Route exact path="/bienio-react/schedule/:groupId/week/:currentWeek" component={Schedule}/> */}
+        <Route exact path="/bienio-react/schedule/:groupId/" component={Schedule}/>
+
         <Route path="/bienio-react/teacher/:teacherId" component={Teacher}/>
         <Route exact path="/bienio-react" component={Greeting}/>
 

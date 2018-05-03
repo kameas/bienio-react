@@ -25,6 +25,7 @@ class Schedule extends Component {
       <div className="schedule">
         <ScheduleList
           requestId={this.props.match.params.groupId}
+          currentWeek={this.props.match.params.currentWeek}
           type="group"
         />
       </div>
