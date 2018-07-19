@@ -7,7 +7,7 @@ import './Day.styl'
 class Day extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       lessons: []
     }
@@ -17,8 +17,6 @@ class Day extends Component {
     this.setState({
       lessons: this.props.lessons
     })
-
-    console.log('in day state:', this.state)
   }
 
   render() {
@@ -36,7 +34,7 @@ class Day extends Component {
               <div className="lesson__cabinets">{item.thid}</div>
 
               <div className="lesson__authors">
-                
+
               </div>
             </div>
           ))}

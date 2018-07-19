@@ -14,20 +14,18 @@ import Day from '../day/Day';
 class ScheduleList extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       days: [],
       title: '',
       week: this.props.currentWeek,
       type: 'group'
     }
-    
+
     this.userData = JSON.parse(localStorage.getItem('userData'));
   }
-  
-  getSchedule() {
 
-    console.log('get data, state:', this.state)
+  getSchedule() {
 
     const url = `https://bsu.bienio.ru/api/${this.props.type === 'group' ? 'get_schedule' : 'get_teacher'}?${this.props.type === 'group' ? 'group_id' : 'teach_id'}=${this.props.requestId}&week_id=${this.state.week}`;
 
@@ -54,25 +52,9 @@ class ScheduleList extends Component {
       localStorage.removeItem('userData')
     }
   }
-  
+
   componentDidMount() {
     this.getSchedule()
-  }
-
-  componentDidUpdate() {
-    console.log('update', arguments, this.state)
-  }
-
-  componentWillReceiveProps(props) {
-    // console.log(props)
-    // console.log(props.currentWeek)
-
-    // this.setState({
-    //   week: props.currentWeek
-    // })
-    // console.log(this.state)
-
-    // this.getSchedule()
   }
 
   render() {
@@ -80,7 +62,7 @@ class ScheduleList extends Component {
     return (
       <div className="schedule-list">
         <div className="schedule-list__title">{this.state.title}</div>
-        
+
         <div className="schedule-list__options">
           <div className="schedule-list__save">
             <label className="schedule-save">
@@ -99,7 +81,7 @@ class ScheduleList extends Component {
         </div>
 
         <div className="schedule-list__wrapper">
-        
+
           {this.state.days.map(item => (
             <div key={item.weekday} className="schedule-list__item">
               <Day

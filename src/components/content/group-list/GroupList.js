@@ -8,7 +8,7 @@ import './GroupList.styl'
 class GroupList extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       groups: [],
       title: ''
@@ -27,7 +27,6 @@ class GroupList extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.match.params)
     this.getGroups()
   }
 
@@ -41,7 +40,7 @@ class GroupList extends Component {
         <div className="schedule-list__title">{this.state.title}</div>
 
         <div className="group-list__items">
-        
+
           {this.state.groups.map(item => (
             <Link to={`/bienio-react/schedule/${item.group_id}`} className="group-list__item" key={item.group_id}>{item.group_name}</Link>
           ))}

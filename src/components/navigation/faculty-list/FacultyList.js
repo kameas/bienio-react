@@ -9,7 +9,7 @@ import './FacultyList.styl'
 class FacultyList extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       faculties: []
     }
@@ -28,7 +28,6 @@ class FacultyList extends Component {
   }
 
   render() {
-    console.log(this.props.faculties);
     return (
       <div className="faculty-list">
         {this.props.faculties.map(item => (

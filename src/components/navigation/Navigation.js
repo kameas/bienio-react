@@ -1,7 +1,6 @@
 // React Components import
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
 
 // Styles
 import './Navigation.styl';
@@ -14,9 +13,6 @@ import SearchField from './search-field/SearchField';
 import FacultyList from './faculty-list/FacultyList';
 
 class Navigation extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     return (

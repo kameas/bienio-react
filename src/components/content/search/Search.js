@@ -11,14 +11,16 @@ import './Search.styl'
 class Search extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       teachers: []
     }
   }
 
   getTeachers() {
-    fetch(`https://bsu.bienio.ru/api/search.php?teach_query=${this.props.location.search.split('?searchQuery=')[1]}`)
+    const query = this.props.location.search.split('?searchQuery=')[1];
+
+    fetch(`https://bsu.bienio.ru/api/search.php?teach_query=${query}`)
     .then(results => results.json())
     .then(data => {
       if (data) {
